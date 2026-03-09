@@ -41,7 +41,30 @@ Transformer based sequence-to-sequence model:
 
 <img width="462" height="733" alt="model_architecture" src="https://github.com/user-attachments/assets/82e3ba84-d82a-4375-9b91-b99716689668" />
 
+### Pipeline Workflow
 
+1. **Data Loading**: Load WMT14 (fr-en) translation pairs — 80,000 sampled from 40.8M available
+2. **Data Cleaning**:
+   - Remove pairs shorter than 3 tokens per side
+   - Filter by sentence length (max 128 words)
+   - Length ratio filtering (EN/FR ratio kept between 0.5–1.5)
+3. **Preprocessing**:
+   - Split data (90% train, 5% val, 5% test)
+   - Tokenization with MarianTokenizer (SentencePiece)
+   - Padding token replaced with -100 so loss ignores it
+4. **Training**:
+   - Fine-tune `Helsinki-NLP/opus-mt-tc-big-en-fr` (232.7M params)
+   - Mixed precision training (FP16 on GPU)
+   - Cosine LR scheduler with 10% warmup
+   - Label smoothing (0.1) for better generalization
+   - Early stopping with patience=3
+5. **Evaluation**:
+   - BLEU, chrF, TER score computation on test set
+   - Attention heatmap visualization per translation
+6. **Deployment**:
+   - Model saved to Hugging Face Hub
+   - Gradio web app served via Hugging Face Spaces
+   
 ### Base model:
 
 Helsinki-NLP/opus-mt-tc-big-en-fr (232.7M parameters)
@@ -238,7 +261,7 @@ Expected improvement:
 
 MIT License
 
-###👨‍💻 Author
+### 👨‍💻 Author
 
 Aditya Kumar (AI / ML Student)
 
