@@ -20,18 +20,7 @@ Model on HuggingFace:
 
 Transformer based sequence-to-sequence model:
 
-
-Input (English)
-↓
-Marian Tokenizer
-↓
-Transformer Encoder (6 layers)
-↓
-Transformer Decoder (6 layers)
-↓
-Beam Search Decoding
-↓
-Output (French)
+<img width="462" height="733" alt="model_architecture" src="https://github.com/user-attachments/assets/82e3ba84-d82a-4375-9b91-b99716689668" />
 
 
 Base model:
