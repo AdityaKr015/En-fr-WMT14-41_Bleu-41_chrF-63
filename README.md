@@ -140,7 +140,7 @@ Training time:
 
 Loss and BLEU progression during training:
 
-![Training Curves](training_curves.png)
+![Training Curves](images/training_curves.png)
 
 ---
 
@@ -148,7 +148,7 @@ Loss and BLEU progression during training:
 
 Sentence length distribution:
 
-![Dataset Distribution](eda.png)
+![Dataset Distribution](images/eda.png)
 
 ---
 
